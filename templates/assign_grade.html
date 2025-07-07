@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %}
+<h2>Assign Grade</h2>
+<form method="POST" class="p-4 bg-white shadow rounded">
+  <div class="mb-3">
+    <label for="student_id" class="form-label">Student ID</label>
+    <input
+      type="number"
+      class="form-control"
+      id="student_id"
+      name="student_id"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="course_id" class="form-label">Course ID</label>
+    <input
+      type="number"
+      class="form-control"
+      id="course_id"
+      name="course_id"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="score" class="form-label">Score (0-100)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="score"
+      name="score"
+      min="0"
+      max="100"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="semester" class="form-label">Semester</label>
+    <input
+      type="text"
+      class="form-control"
+      id="semester"
+      name="semester"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Assign Grade</button>
+</form>
+{% endblock %}

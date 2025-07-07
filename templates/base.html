@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Grading System</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        color: #222;
+        min-height: 100vh;
+      }
+      .navbar {
+        background-color: #000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .navbar-brand,
+      .nav-link {
+        color: #000000 !important;
+        font-weight: 600;
+        transition: color 0.25s ease;
+      }
+      .nav-link:hover {
+        color: #555353 !important;
+        text-decoration: underline;
+      }
+      .container {
+        max-width: 650px;
+        margin-top: 40px;
+        padding: 30px 35px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fafafa;
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.05);
+      }
+
+      h2 {
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #111;
+        letter-spacing: 0.05em;
+      }
+      form label {
+        font-weight: 600;
+        color: #333;
+      }
+      .btn-primary {
+        background-color: #000;
+        border: none;
+        font-weight: 600;
+        padding: 10px 16px;
+        transition: background-color 0.25s ease;
+      }
+      .btn-primary:hover {
+        background-color: #444;
+      }
+      .alert {
+        border-radius: 6px;
+        font-weight: 600;
+      }
+      @media (max-width: 576px) {
+        .container {
+          margin: 20px 15px;
+          padding: 25px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}"
+          >Student Grading System</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('add_student') }}"
+                >Add Student</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('add_course') }}"
+                >Add Course</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('assign_grade') }}"
+                >Assign Grade</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('view_transcript') }}"
+                >View Transcript</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div
+        class="alert alert-{{category}} alert-dismissible fade show"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

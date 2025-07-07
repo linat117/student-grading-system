@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<h2>Transcript for Student ID: {{ student_id }}</h2>
+
+{% if grades %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Course Name</th>
+      <th>Score</th>
+      <th>Grade</th>
+      <th>Semester</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for course, score, grade_letter, semester in grades %}
+    <tr>
+      <td>{{ course }}</td>
+      <td>{{ score }}</td>
+      <td>{{ grade_letter }}</td>
+      <td>{{ semester }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No grades found for this student.</p>
+{% endif %} {% endblock %}
