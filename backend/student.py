@@ -1,8 +1,10 @@
 from db_config import db_connection 
 
 def add_student():
+    db = None
+    cursor = None
     try:
-        db = db.connection()
+        db = db_connection()
         cursor = db.cursor()
 
         student_id = int(input("Enter studentID: "))
@@ -21,8 +23,12 @@ def add_student():
     except Exception as e:
         print("❌ Error adding student:", e)
     finally:
-        cursor.close()
-        db.close()
+        if cursor:
+            
+            cursor.close()
+        if db:
+
+            db.close()
 def list_students():
      try:
         db = db_connection()

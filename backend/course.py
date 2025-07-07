@@ -16,7 +16,7 @@ def add_course():
                         (course_id, course_name, instructor))
         
         db.commit()
-        print("✔️Course added successfully!")
+        print("✔️ Course added successfully!")
     
     except Exception as e:
         print("Error adding course:", e)
